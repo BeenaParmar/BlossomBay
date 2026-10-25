@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment Gateway</title>
+
+<style>
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(to bottom right,#fff1f6,#f8d6e6,#fff8fc);
+  margin:0;
+}
+
+.container{
+  max-width:480px;
+  margin:60px auto;
+  background:#ffffffee;
+  padding:30px;
+  border-radius:25px;
+  box-shadow:0 12px 30px rgba(204,91,130,0.25);
+  animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp{
+  from{opacity:0; transform:translateY(30px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+h2{
+  text-align:center;
+  color:#c14d79;
+  margin-bottom:20px;
+}
+
+.payment-option{
+  padding:14px 18px;
+  background:#fff6fa;
+  border-radius:20px;
+  margin-bottom:15px;
+  cursor:pointer;
+  transition:0.3s;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.payment-option:hover{
+  background:#ffd6e4;
+  transform:scale(1.02);
+}
+
+.payment-details{
+  display:none;
+  margin-top:10px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:1px solid #f2b8cc;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  background:#cc5b82;
+  color:white;
+  border:none;
+  border-radius:25px;
+  margin-top:20px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#a94467;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>🌸 Choose Payment Method</h2>
+
+<!-- UPI -->
+<div class="payment-option" onclick="toggle('upi')">
+  <span>📱 UPI</span><span>›</span>
+</div>
+<div id="upi" class="payment-details">
+  <input type="text" placeholder="Enter UPI ID">
+</div>
+
+<!-- Card -->
+<div class="payment-option" onclick="toggle('card')">
+  <span>💳 Credit / Debit Card</span><span>›</span>
+</div>
+<div id="card" class="payment-details">
+  <input type="text" placeholder="Card Number">
+  <input type="text" placeholder="Expiry (MM/YY)">
+  <input type="text" placeholder="CVV">
+</div>
+
+<!-- Wallet -->
+<div class="payment-option" onclick="toggle('wallet')">
+  <span>👛 Digital Wallet</span><span>›</span>
+</div>
+<div id="wallet" class="payment-details">
+  <input type="text" placeholder="Wallet Mobile Number">
+</div>
+
+<!-- COD -->
+<div class="payment-option" onclick="toggle('cod')">
+  <span>💵 Cash on Delivery</span><span>›</span>
+</div>
+<div id="cod" class="payment-details">
+  <p style="margin-top:10px;color:#7b2f52">
+    Pay when your order is delivered 🌷
+  </p>
+</div>
+
+<form action="place_order.php" method="POST">
+    <input type="hidden" name="payment_method" id="selected_method">
+    <button type="submit">Confirm Order</button>
+</form>
+</div>
+
+
+</body>
+</html>
